@@ -86,20 +86,18 @@ function mainFunc(){
 //Ajax get request
 //Checks for a response and animates the indicator accordingly.
 function send(){
-    pack = arr['data'];
-    arr['data'].length = 0;
-
     $.ajax({
                 url: "{% url 'detect' %}",
                 data: arr,
                 async: false,
                 success: function(data){
-                    if (data==true){
+                    if (data==1){
                         $('#indicator').fadeIn('slow');
                         $('#indicator').fadeOut('slow');
                     }
                 }
     })
 
+    arr['data'].length = 0;
 };
 </script>

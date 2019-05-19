@@ -20,4 +20,4 @@ def detect(request):
     samples = request.GET.get("data")
     arr = np.array(samples).reshape(6,-1)
     result = clf.predict(arr).any()
-    return render(request, 'index.html', result)
+    return render(request, 'index.html', int(result))
