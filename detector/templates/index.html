@@ -31,14 +31,14 @@
 var x, y, z, alpha, gamma, beta;
 var interval;
 var arr = {'data':[]};
-var ON = false;
+var on = false;
 
 
 window.addEventListener("devicemotion", function(event){
-        //x = event.accelerationIncludingGravity.x;
-        //y = event.accelerationIncludingGravity.y;
-        //z = event.accelerationIncludingGravity.z;
-        console.log(event)
+        x = event.accelerationIncludingGravity.x;
+        y = event.accelerationIncludingGravity.y;
+        z = event.accelerationIncludingGravity.z;
+        //console.log(event)
         }
     ,true);
 window.addEventListener('deviceorientation', function(event){
@@ -59,17 +59,17 @@ if (window.DeviceOrientationEvent) {
 };
 
 $('input').on('click', function(){
-    if(ON==true){
-        ON=false;
+    if(on==true){
+        on=false;
     } else {
-        ON=true;
+        on=true;
     }
 });
 
 //Main function,
 //Creates list of sensor data.
-function mainFunc(){ /*
-    if(ON=true){
+function mainFunc(){
+    if(on==true){
         interval = setInterval(() => {
             arr['data'] = arr['data'].concat([x,y,z,alpha,gamma,beta]);
             if(arr['data'].length >=30){
@@ -81,7 +81,6 @@ function mainFunc(){ /*
     } else {
         clearInterval(interval);
     }
-    */
 }
 
 //Ajax get request
