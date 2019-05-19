@@ -21,6 +21,12 @@
     <hr>
     <input type="button" name="switch" id="switch" onclick="mainFunc()">Sending checkbox
     <div id='indicator'></div>
+    <input type="text" readonly id="x" value ="">
+    <input type="text" readonly id="y" value ="">
+    <input type="text" readonly id="z" value ="">
+    <input type="text" readonly id="a" value ="">
+    <input type="text" readonly id="g" value ="">
+    <input type="text" readonly id="b" value ="">
 </body>
 
 
@@ -72,6 +78,12 @@ function mainFunc(){
     if(on==true){
         interval = setInterval(() => {
             arr['data'] = arr['data'].concat([x,y,z,alpha,gamma,beta]);
+            $("#x").val(x);
+            $("#x").val(y);
+            $("#x").val(z);
+            $("#a").val(alpha);
+            $("#g").val(gamma);
+            $("#b").val(beta);
             if(arr['data'].length >=30){
             send();
             console.log(arr);
