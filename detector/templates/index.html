@@ -34,12 +34,13 @@
 
 <!--Clientside script-->
 <script>
-var x, y, z, alpha, gamma, beta;
-var interval;
-var arr = {'data':[]};
-var on = false;
-
-
+    var x, y, z, alpha, gamma, beta;
+    var interval;
+    var arr = {'data':[]};
+    var on = false;
+    
+    
+//Events that are running always
 window.addEventListener("devicemotion", function(event){
         x = event.accelerationIncludingGravity.x;
         y = event.accelerationIncludingGravity.y;
@@ -55,14 +56,6 @@ window.addEventListener('deviceorientation', function(event){
     ,true);
 
 
-//Events that are running always
-if (window.DeviceMotionEvent) {
-	console.log("devicemotion was defined");
-};
-
-if (window.DeviceOrientationEvent) {
-  console.log("GyroScope was defined");
-};
 
 $('input').on('click', function(){
     if(on==true){
@@ -86,7 +79,7 @@ function mainFunc(){
             $("#b").val(beta);
             if(arr['data'].length >=30){
             send();
-            console.log(arr);
+            console.log(arr['data']);
             }
             console.log([x,y,z,alpha,gamma,beta]);
         }, 200);
