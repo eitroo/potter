@@ -5,7 +5,6 @@ from django.urls import reverse
 import pickle
 import numpy as np
 import os
-from sklearn.svm import SVC
 
 clf = pickle.load(open('./defaultSVM','rb'))
 
