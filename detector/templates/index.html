@@ -96,6 +96,7 @@ function send(){
                 url: "{% url 'detect' %}",
                 data: arr['data'],
                 async: false,
+                dataType = 'json',
                 success: function(data){
                     if (data==1){
                         $('#indicator').fadeIn('slow');

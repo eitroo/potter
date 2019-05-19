@@ -17,7 +17,8 @@ def index(request):
 
 
 def detect(request):
-    samples = request.GET.get("data")
+    samples = request.GET
+    print(samples)
     arr = np.array(samples).reshape(6,-1)
     result = clf.predict(arr).any()
     return render(request, 'index.html', int(result))
