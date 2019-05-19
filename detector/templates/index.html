@@ -94,7 +94,7 @@ function mainFunc(){
 function send(){
     $.ajax({
                 url: "{% url 'detect' %}",
-                data: arr,
+                data: arr['data'],
                 async: false,
                 success: function(data){
                     if (data==1){
