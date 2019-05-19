@@ -6,12 +6,20 @@
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous">
     </script>
+    <style>
+    #indicator{
+        width: 50px;
+        height:50px;
+        background: chartreuse;
+        display:none;
+    }
+    </style>
 </head>
 
 <body>
     <h1>Is it a pothole?</h1>
     <hr>
-    <input type="checkbox" name="switch" id="switch" onclick="mainFunc()">Sending checkbox
+    <input type="button" name="switch" id="switch" onclick="mainFunc()">Sending checkbox
     <div id='indicator'></div>
 </body>
 
@@ -20,53 +28,79 @@
 
 <!--Clientside script-->
 <script>
-window.addEventListener("devicemotion", accelerometer,True);
-window.addEventListener('deviceorientation', orientation, True);
-
 var x, y, z, alpha, gamma, beta;
+var interval;
 var arr = {'data':[]};
-//Events that are running always
-function accelerometer(event){
-    x = event.accelerationIncludingGravity.x;
-    y = event.accelerationIncludingGravity.y;
-    z = event.accelerationIncludingGravity.z;
-}
+var ON = false;
 
-function orientation(event){
-    alpha = event.alpha;
-    gamma = event.gamma;
-    beta = event.beta;
-}
+
+window.addEventListener("devicemotion", function(event){
+        //x = event.accelerationIncludingGravity.x;
+        //y = event.accelerationIncludingGravity.y;
+        //z = event.accelerationIncludingGravity.z;
+        console.log(event)
+        }
+    ,true);
+window.addEventListener('deviceorientation', function(event){
+        alpha = event.alpha;
+        gamma = event.gamma;
+        beta = event.beta;
+        }
+    ,true);
+
+
+//Events that are running always
+if (window.DeviceMotionEvent) {
+	console.log("devicemotion was defined");
+};
+
+if (window.DeviceOrientationEvent) {
+  console.log("GyroScope was defined");
+};
+
+$('input').on('click', function(){
+    if(ON==true){
+        ON=false;
+    } else {
+        ON=true;
+    }
+});
+
 //Main function,
 //Creates list of sensor data.
-function mainFunc(){
-    if(document.getElementById('checkbox').checked){
+function mainFunc(){ /*
+    if(ON=true){
         interval = setInterval(() => {
-            arr['data'].push(x,y,z,alpha,gamma,beta);
-            /*if(arr['data'].length >=30){
+            arr['data'] = arr['data'].concat([x,y,z,alpha,gamma,beta]);
+            if(arr['data'].length >=30){
             send();
-            }*/
+            console.log(arr);
+            }
+            console.log([x,y,z,alpha,gamma,beta]);
         }, 200);
     } else {
         clearInterval(interval);
     }
+    */
 }
 
 //Ajax get request
 //Checks for a response and animates the indicator accordingly.
 function send(){
+    pack = arr['data'];
+    arr['data'].length = 0;
+
     $.ajax({
                 url: "{% url 'detect' %}",
                 data: arr,
                 async: false,
                 success: function(data){
-                    if (data==True){
+                    if (data==true){
                         $('#indicator').fadeIn('slow');
                         $('#indicator').fadeOut('slow');
                     }
                 }
     })
-    arr['data'].length = 0;
 
 };
 </script>

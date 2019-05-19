@@ -7,7 +7,7 @@ import numpy as np
 import os
 from sklearn.svm import SVC
 
-clf = pickle.load(open(os.getcwd()+'\defaultSVM'))
+clf = pickle.load(open('./defaultSVM','rb'))
 
 # Create your views here.
 def index(request):
