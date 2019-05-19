@@ -17,7 +17,7 @@ def index(request):
 
 
 def detect(request):
-    samples = request.GET
+    samples = dict(request.GET)
     print(samples)
     arr = np.array(samples).reshape(6,-1)
     result = clf.predict(arr).any()
