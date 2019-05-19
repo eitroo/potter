@@ -7,6 +7,8 @@ import numpy as np
 import os
 from sklearn.svm import SVC
 
+clf = pickle.load(open(os.getcwd()+'\defaultSVM'))
+
 # Create your views here.
 def index(request):
     context = {
@@ -18,6 +20,5 @@ def index(request):
 def detect(request):
     samples = request.GET.get("data")
     arr = np.array(samples).reshape(-1,6)
-    clf = pickle.load(open(os.getcwd()+'\defaultSVM'))
     result = clf.predict(arr).any()
     return render(request, 'index.html', result)
