@@ -44,7 +44,7 @@
     <h1>Is it a pothole?</h1>
     <div id="container"> 
         <hr>
-        <input type="button" name="switch" id="switch" onclick="mainFunc()" value="Sending Switch">
+        <!--<input type="button" name="switch" id="switch" onclick="mainFunc()" value="Sending Switch">-->
         <hr>  
     </div>
     <div id = 'box'>
@@ -86,17 +86,17 @@ window.addEventListener('deviceorientation', function(event){
 
 
 
-$('input').on('click', function(){
+/*$('input').on('click', function(){
     if(on==true){
         on=false;
     } else {
         on=true;
     }
-});
+});*/
 
 //Main function,
 //Creates list of sensor data.
-function mainFunc(){
+//function mainFunc(){
     if(on==true){
         interval = setInterval(() => {
             arr['data'] = arr['data'].concat([x,y,z,alpha,gamma,beta]);
@@ -115,7 +115,7 @@ function mainFunc(){
     } else {
         clearInterval(interval);
     }
-}
+//}
 
 //Ajax get request
 //Checks for a response and animates the indicator accordingly.
