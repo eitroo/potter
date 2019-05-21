@@ -14,22 +14,39 @@
         display:none;
     }
     #box{
-        background: dimgrey;
-        display: inline-block;
+        margin: 0;
+        padding: 10px;
+        background: rgb(155, 199, 186);
         text-align: center;
+        width:auto;
+        height: auto;
+    }
+    #box input{
+        text-align: center
     }
     h1{
+        margin:10px;
+        padding: 15px;
+        height: 50px;
         text-align: center;
+        color: rgba(245, 245, 220, 0.911);
         font-family: 'Times New Roman', Times, serif;
+        background: rgb(50, 50, 87);
+    }
+    #container{
+        text-align: center;
+        background: rgb(236, 215, 184)
     }
     </style>
 </head>
 
 <body>
     <h1>Is it a pothole?</h1>
-    <hr>
-    <input type="button" name="switch" id="switch" onclick="mainFunc()">Sending Switch
-    <hr>  
+    <div id="container"> 
+        <hr>
+        <input type="button" name="switch" id="switch" onclick="mainFunc()" value="Sending Switch">
+        <hr>  
+    </div>
     <div id = 'box'>
         <input type="text" readonly id="x" value =""> <br>
         <input type="text" readonly id="y" value =""> <br>
@@ -37,7 +54,7 @@
         <input type="text" readonly id="a" value =""> <br>
         <input type="text" readonly id="g" value =""> <br>
         <input type="text" readonly id="b" value =""> <br>
-        <div id='indicator'></div>
+    <div id='indicator'></div>
     </div>
 </body>
 
