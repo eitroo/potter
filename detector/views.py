@@ -22,4 +22,4 @@ def detect(request):
     samples = samples.get('data[]')
     arr = np.array(samples).reshape(-1,6)
     result = clf.predict(arr).any()
-    return HttpResponse(int(result))
+    return render(request, 'index.html', int(result))
