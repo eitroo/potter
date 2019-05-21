@@ -35,6 +35,7 @@
 
 <!--Clientside script-->
 <script>
+$(document).ready(function(){
     var x, y, z, alpha, gamma, beta;
     var interval;
     var arr = {'data':[]};
@@ -70,20 +71,20 @@ $('input').on('click', function(){
 //Creates list of sensor data.
 //function mainFunc(){
 //    if(on==true){
-        interval = setInterval(() => {
-            arr['data'] = arr['data'].concat([x,y,z,alpha,gamma,beta]);
-            $("#x").val(x);
-            $("#y").val(y);
-            $("#z").val(z);
-            $("#a").val(alpha);
-            $("#g").val(gamma);
-            $("#b").val(beta);
-            if((arr['data'].length >=30) && (on==true)){
-            send();
-            console.log(arr['data']);
-            }
-            console.log([x,y,z,alpha,gamma,beta]);
-        }, 200);
+interval = setInterval(() => {
+    arr['data'] = arr['data'].concat([x,y,z,alpha,gamma,beta]);
+    $("#x").val(x);
+    $("#y").val(y);
+    $("#z").val(z);
+    $("#a").val(alpha);
+    $("#g").val(gamma);
+    $("#b").val(beta);
+    if((arr['data'].length >=30) && (on==true)){
+    send();
+    console.log(arr['data']);
+    }
+    console.log([x,y,z,alpha,gamma,beta]);
+}, 200);
 //    } else {
 //        clearInterval(interval);
 //    }
@@ -107,4 +108,5 @@ function send(){
 
     arr['data'].length = 0;
 };
+     });
 </script>
